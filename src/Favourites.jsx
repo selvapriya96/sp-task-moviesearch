@@ -40,4 +40,4 @@ function Favourites({favourites, removeFavourite}) {
 }
 
 
-            export default Favourites
+export default Favourites

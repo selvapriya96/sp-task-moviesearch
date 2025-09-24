@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 const API_KEY = "14952542"
-const base_url = "http://www.omdbapi.com/";
+const base_url = "https://www.omdbapi.com/";
 function DetailPage() {
   const {id} = useParams();
   const [movie, setMovie] = useState(null);

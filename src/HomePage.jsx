@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
 import Favourites from './Favourites';
 const API_KEY = "14952542"
-const base_url = "http://www.omdbapi.com/";
+const base_url = "https://www.omdbapi.com/";
 function HomePage({ addfavourite, favourites, removeFavourite }) {
     const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
