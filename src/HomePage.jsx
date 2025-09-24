@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
+import Favourites from './Favourites';
 const API_KEY = "14952542"
 const base_url = "http://www.omdbapi.com/";
-function HomePage({ addfavourite }) {
+function HomePage({ addfavourite, favourites, removeFavourite }) {
     const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
@@ -33,6 +34,13 @@ function HomePage({ addfavourite }) {
     return (
         <div>
             <h1 className="p-6 text-2xl text-red-600">Welcome to Movie Search App</h1>
+
+            <Link to= "./favourites">
+            <div className="p-4">
+                <span className="text-lg font-semibold text-green-600">
+                    ⭐ Favourites: {favourites.length}
+                </span>
+            </div></Link>
             <div className="flex gap-2">
                 <input
                     type="text"
@@ -41,13 +49,12 @@ function HomePage({ addfavourite }) {
                     placeholder="Search for Movies......."
                     className="border p-2 rounded flex-1"
                 />
-                <Link to="/favourites" className="text-blue-500 underline mb-4 inline-block">
-                    Go to Favourites
-                </Link>
+               
                 <button onClick={() => searchMovies(query, 1)}
                     className="px-4 py-2 bg-blue-500 text-white rounded">
                     SEARCH
                 </button>
+
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                 {movies.map((movie) => (

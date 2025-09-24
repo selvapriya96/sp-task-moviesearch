@@ -8,21 +8,24 @@ function App() {
   const [favourites, setFavourites] = useState([]);
 
   const addFavourite = (movie) => {
-    const exists = favourites.find((m) => { m.imdbID === movie.imdbID });
+    const exists = favourites.find((m) => m.imdbID === movie.imdbID);
+
+
     if (!exists) {
       setFavourites([...favourites, movie]);
     }
 
   }
   const removeFavourite = (id) => {
-    setFavourites(favourites.filter((m) => { m.imdbID !== id }));
+    setFavourites(favourites.filter((m) => m.imdbID !== id));
+
   }
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<HomePage addfavourite={addFavourite} />} />
+        <Route path='/' element={<HomePage favourites={favourites} addfavourite={addFavourite} removefavourite={removeFavourite} />} />
         <Route path='/details/:id' element={<DetailsPage addfavourite={addFavourite} />} />
-        <Route path="/Favourites" element={<Favourites removeFavourite={removeFavourite} />} />
+        <Route path="/favourites" element={<Favourites favourites={favourites} removefavourite={removeFavourite} />} />
       </Routes>
     </BrowserRouter>
   )
